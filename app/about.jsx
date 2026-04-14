@@ -7,11 +7,10 @@ const About = () => {
   const theme = Colors[colorScheme] ?? Colors.light
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>About Page</Text>
-      <Link href="/" style={ styles.link}>
-        Back to Home
-      </Link>
+    <View style={[styles.container, {backgroundColor: theme.background}]}>
+      <Text style={[styles.title, {color: theme.title}]}>About Page</Text>
+
+      <Link href="/" style={[styles.link, {color: theme.text}]}>Home Page</Link>
     </View>
   )
 }
@@ -19,19 +18,15 @@ const About = () => {
 export default About
 
 const styles = StyleSheet.create({
-    container: {
+  container: {
+    backgroundColor: '#e0dfe8',
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
   },
   title: {
-    fontSize: 24,
+    fontSize: 18,
     fontWeight: 'bold',
-  },
-  img: {
-    marginVertical: 20,
-    maxWidth: 100,
-    height: 100,
   },
   link: {
     marginVertical: 10,
