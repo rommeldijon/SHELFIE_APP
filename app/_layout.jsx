@@ -9,7 +9,7 @@ export default function RootLayout() {
 
   return (
     <>
-      <StatusBar value="auto" />
+      <StatusBar style="auto" />
       <Stack screenOptions={{
         headerStyle: { backgroundColor: theme.navBackground },
         headerTintColor: theme.title,
