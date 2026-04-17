@@ -5,6 +5,7 @@ import ThemedView from "../components/ThemedView"
 import ThemedText from "../components/ThemedText"
 import ThemedLogo from "../components/ThemedLogo"
 import Spacer from "../components/Spacer"
+import { Colors } from '../constants/Colors'
 
 const Home = () => {
   return (
@@ -25,6 +26,11 @@ const Home = () => {
       <Link href="/register" style={styles.link}>
         <ThemedText>Register Page</ThemedText>
       </Link>
+
+       <Link href="/profile" style={styles.link}>
+        <ThemedText>Profile</ThemedText>
+      </Link>
+      
     </ThemedView>
   )
 }
