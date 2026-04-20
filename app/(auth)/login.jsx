@@ -13,15 +13,19 @@ const Login = () => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
-  const { user } = useUser()
+  const { user, login } = useUser()
 
   const handleSubmit = async () => {
-    console.log('current user: ', user)    
-    console.log('login form submitted: ', email, password)
+    try {
+      await login(email, password)
+      console.log('current user is: ', user)
+    } catch (error) {
+      
+    }
   }
 
   return (
-    //<TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+  // <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <ThemedView style={styles.container}>
         
         <Spacer />
@@ -60,7 +64,7 @@ const Login = () => {
         </Link>
 
       </ThemedView>
-    //</TouchableWithoutFeedback>
+  //  </TouchableWithoutFeedback>
   )
 }
 
