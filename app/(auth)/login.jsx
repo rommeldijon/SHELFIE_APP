@@ -1,6 +1,7 @@
 import { StyleSheet, Text, Keyboard, TouchableWithoutFeedback } from 'react-native'
 import { Link } from 'expo-router'
 import { useState } from 'react'
+import { useUser } from '../../hooks/useUser'
 
 import ThemedView from '../../components/ThemedView'
 import ThemedText from '../../components/ThemedText'
@@ -12,7 +13,10 @@ const Login = () => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
+  const { user } = useUser()
+
   const handleSubmit = async () => {
+    console.log('current user: ', user)    
     console.log('login form submitted: ', email, password)
   }
 
