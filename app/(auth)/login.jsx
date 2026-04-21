@@ -1,4 +1,4 @@
-import { StyleSheet, Text, Keyboard, TouchableWithoutFeedback } from 'react-native'
+import { StyleSheet, Text, Keyboard, TouchableWithoutFeedback, ActivityIndicator } from 'react-native'
 import { Link } from 'expo-router'
 import { useState } from 'react'
 import { useUser } from '../../hooks/useUser'
@@ -13,7 +13,7 @@ import { Colors } from '../../constants/Colors'
 const Login = () => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
-  const [error, setError] = useState(null)
+  const [error, setError] = useState()
 
   const { user, login } = useUser()
 
@@ -28,7 +28,7 @@ const Login = () => {
   }
 
   return (
-  // <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+   // <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <ThemedView style={styles.container}>
         
         <Spacer />
@@ -60,14 +60,19 @@ const Login = () => {
         </ThemedButton>
 
         <Spacer />
+        {error && <Text style={styles.error}>{error}</Text>}
+
+        <Spacer height={100} />
         <Link href="/register" replace>
           <ThemedText style={{ textAlign: "center" }}>
             Register instead
           </ThemedText>
         </Link>
 
+        {/* <ActivityIndicator size="large" color="white" /> */}
+
       </ThemedView>
-  //  </TouchableWithoutFeedback>
+   // </TouchableWithoutFeedback>
   )
 }
 
@@ -84,7 +89,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     marginBottom: 30
   },
-   error: {
+  error: {
     color: Colors.warning,
     padding: 10,
     backgroundColor: '#f5c1c8',
