@@ -28,7 +28,7 @@ const Login = () => {
   }
 
   return (
-   // <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+   //<TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <ThemedView style={styles.container}>
         
         <Spacer />
@@ -72,7 +72,7 @@ const Login = () => {
         {/* <ActivityIndicator size="large" color="white" /> */}
 
       </ThemedView>
-   // </TouchableWithoutFeedback>
+   //</TouchableWithoutFeedback>
   )
 }
 
