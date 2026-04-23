@@ -37,7 +37,7 @@ export function BooksProvider({children}) {
         id
       )
       return response
-      
+
     } catch (error) {
       console.log(error.message)
     }
@@ -63,7 +63,11 @@ export function BooksProvider({children}) {
 
   async function deleteBook(id) {
     try {
-      
+      await databases.deleteDocument(
+        DATABASE_ID,
+        COLLECTION_ID,
+        id
+      )
     } catch (error) {
       console.log(error.message)
     }
