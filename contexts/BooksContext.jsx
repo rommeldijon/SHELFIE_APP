@@ -18,9 +18,10 @@ export function BooksProvider({children}) {
         DATABASE_ID, 
         COLLECTION_ID,
         [
-          Query.equal("userId", user.$id)
+          Query.equal('userId', user.$id)
         ]
       )
+
       setBooks(response.documents)
       console.log(response.documents)
     } catch (error) {
@@ -63,13 +64,14 @@ export function BooksProvider({children}) {
   }
 
   useEffect(() => {
+
     if (user) {
       fetchBooks()
     } else {
       setBooks([])
     }
-  }, [user])
 
+  }, [user])
 
   return (
     <BooksContext.Provider 
