@@ -64,26 +64,33 @@ export function BooksProvider({children}) {
   }
 
   useEffect(() => {
-    let unsucbscribe
-    const channel = 'databases.${DATABASE_ID}.collections.${COLLECTION_ID}.documents'
+    let unsubscribe
+    const channel = `databases.${DATABASE_ID}.collections.${COLLECTION_ID}.documents`
 
     if (user) {
       fetchBooks()
-      
-      unsucbscribe = client.subscribe(channel, (response) => {
-        const {payload, events} = response
 
-        if (events [0].includes('create')) {
+      unsubscribe = client.subscribe(channel, (response) => {
+        const { payload, events } = response
+        console.log(events)
+
+        if (events[0].includes("create")) {
           setBooks((prevBooks) => [...prevBooks, payload])
         }
+
+        if (events[0].includes("delete")) {
+          setBooks((prevBooks) => prevBooks.filter((book) => book.$id !== payload.$id))
+        }
       })
+
     } else {
       setBooks([])
     }
 
     return () => {
-     if (unsucbscribe) unsucbscribe()
+      if (unsubscribe) unsubscribe()
     }
+
   }, [user])
 
   return (
